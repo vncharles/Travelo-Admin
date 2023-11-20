@@ -41,13 +41,15 @@ const getGenderString = (gender) => {
 
 // Function to populate the form fields with the fetched data
 const populateForm = (data) => {
-  document.getElementById("staffName").value = data.name || "";
-  document.getElementById("staffEmail").value = data.email || "";
-  document.getElementById("staffPhone").value = data.phone || "";
-  document.getElementById("staffIDCard").value = data.personId || "";
-  document.getElementById("staffAddress").value = data.address || "";
-  document.getElementById("staffGender").value = getGenderString(data.gender);
-  document.getElementById("staffDOB").value = data.birthday || "";
+  if (data) {
+    document.getElementById("staffName").value = data.name || "";
+    document.getElementById("staffEmail").value = data.email || "";
+    document.getElementById("staffPhone").value = data.phone || "";
+    document.getElementById("staffIDCard").value = data.personId || "";
+    document.getElementById("staffAddress").value = data.address || "";
+    document.getElementById("staffGender").value = data.gender ? "male" : "female";
+    document.getElementById("staffDOB").value = data.birthday || "";
+  }
 };
 
 // Fetch data when the page loads
@@ -63,10 +65,11 @@ const getFormData = () => {
     phone: document.getElementById("staffPhone").value,
     personId: document.getElementById("staffIDCard").value,
     address: document.getElementById("staffAddress").value,
-    gender: document.getElementById("staffGender").value === "male", // assuming the value 'male' indicates 'Nam'
+    gender: document.getElementById("staffGender").value === "male" ? true : false,
     birthday: document.getElementById("staffDOB").value,
   };
 };
+
 
 // Function to handle form submission
 const handleSubmit = async (event) => {
@@ -83,18 +86,23 @@ const handleSubmit = async (event) => {
       url += `/${staffId}`;
       method = "PUT";
     }
-
+    
     const response = await fetch(url, {
       method: method,
       headers: {
         Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       },
-      body: formData,
+      body: JSON.stringify(formData),
     });
-
+    
+    
+    
+    console.log(formData);
+    
     if (response.ok) {
       alert("Lưu thành công!");
-      window.location.href = "../HTML/Staff.html";
+      window.location.href = "Staff.html";
     } else {
       alert("Không thể lưu được!");
     }

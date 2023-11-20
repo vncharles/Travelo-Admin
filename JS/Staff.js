@@ -48,7 +48,7 @@ const renderOrders = async () => {
                             <td>${staff.phone}</td>
                             <td>${staff.personId}</td>
                             <td>${staff.address}</td>
-                            <td>${staff.gender}</td>
+                            <td>${staff.gender?"Nam":"Nữ"}</td>
                             <td>${staff.birthday}</td>
                             <td>
                               <button class="btn-edit" data-id="${staff.id}">Sửa</button>

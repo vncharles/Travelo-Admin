@@ -30,7 +30,7 @@ form.addEventListener("submit", async (event) => {
       return;
     }
     localStorage.setItem("data", JSON.stringify(responseData));
-    window.location.href = "../HTML/admin.html";
+    window.location.href = "../HTML/Booking.html";
   } catch (error) {
     console.error(error);
     alert(

@@ -32,99 +32,100 @@ const fetchOrders = () => {
 const renderOrders = async () => {
   try {
     const orders = await fetchOrders();
-    const tbody = document.querySelector("#dataTable2 tbody");
+    const tbody = document.querySelector("#category-list");
 
     // Remove all rows
     tbody.innerHTML = "";
 
     // Render each order as a row
-    orders.forEach((order) => {
+    console.log("Data render: " + orders);
+    orders.forEach((staff) => {
       const tr = document.createElement("tr");
       tr.innerHTML = `
-        <td>${order.id}</td>
-        <td class="numberPhone">${order.numberPhone}</td>
-        <td class="nameReceiver">${order.nameReceiver}</td>
-        <td class="address">${order.address}</td>
-        <td>${order.orderDate}</td>
-        <td>${order.totalPrice}</td>
-        <td>
-          <button class="btnDetail" data-id="${order.id}">Xem</button>
-        </td>
-        <td>
-          <button class="btnEdit" data-id="${order.id}">Sửa</button>
-        </td>
+                            <td>${staff.id}</td>
+                            <td>${staff.name}</td>
+                            <td>${staff.email}</td>
+                            <td>${staff.phone}</td>
+                            <td>${staff.personId}</td>
+                            <td>${staff.address}</td>
+                            <td>${staff.gender}</td>
+                            <td>${staff.birthday}</td>
+                            <td>
+                              <button class="btn-edit" data-id="${staff.id}">Sửa</button>
+                              <button class="btn-delete" data-id="${staff.id}">Xóa</button>
+                          </td>
       `;
       tbody.appendChild(tr);
 
-      // Add event listener for "Sửa" button
-      const btnEdit = tr.querySelector(".btnEdit");
-      btnEdit.addEventListener("click", () => {
-        // Get the fields to be edited
-        const numberPhoneTd = tr.querySelector(".numberPhone");
-        const nameReceiverTd = tr.querySelector(".nameReceiver");
-        const addressTd = tr.querySelector(".address");
+      // // Add event listener for "Sửa" button
+      // const btnEdit = tr.querySelector(".btnEdit");
+      // btnEdit.addEventListener("click", () => {
+      //   // Get the fields to be edited
+      //   const numberPhoneTd = tr.querySelector(".numberPhone");
+      //   const nameReceiverTd = tr.querySelector(".nameReceiver");
+      //   const addressTd = tr.querySelector(".address");
 
-        // Replace the fields with input fields
-        numberPhoneTd.innerHTML = `
-          <form>
-            <input type="text" id="inputNb" value="${order.numberPhone}">
-          </form>
-        `;
-        const inputNb = numberPhoneTd.querySelector("#inputNb");
+      //   // Replace the fields with input fields
+      //   numberPhoneTd.innerHTML = `
+      //     <form>
+      //       <input type="text" id="inputNb" value="${order.numberPhone}">
+      //     </form>
+      //   `;
+      //   const inputNb = numberPhoneTd.querySelector("#inputNb");
 
-        nameReceiverTd.innerHTML = `
-          <form>
-            <input type="text" id="inputName" value="${order.nameReceiver}">
-          </form>
-        `;
-        const inputName = nameReceiverTd.querySelector("#inputName");
+      //   nameReceiverTd.innerHTML = `
+      //     <form>
+      //       <input type="text" id="inputName" value="${order.nameReceiver}">
+      //     </form>
+      //   `;
+      //   const inputName = nameReceiverTd.querySelector("#inputName");
 
-        addressTd.innerHTML = `
-          <form>
-            <input type="text" id="inputAdd" value="${order.address}">
-          </form>
-        `;
-        const inputAdd = addressTd.querySelector("#inputAdd");
+      //   addressTd.innerHTML = `
+      //     <form>
+      //       <input type="text" id="inputAdd" value="${order.address}">
+      //     </form>
+      //   `;
+      //   const inputAdd = addressTd.querySelector("#inputAdd");
 
-        // Change the button to "Lưu"
-        btnEdit.textContent = "Lưu";
-        btnEdit.dataset.flag = "save";
+      //   // Change the button to "Lưu"
+      //   btnEdit.textContent = "Lưu";
+      //   btnEdit.dataset.flag = "save";
 
-        // Get the "Lưu" button
-        const btnSave = tr.querySelector(".btnEdit[data-flag='save']");
+      //   // Get the "Lưu" button
+      //   const btnSave = tr.querySelector(".btnEdit[data-flag='save']");
 
-        // Add event listener for "Lưu" button
-        btnSave.addEventListener("click", async () => {
-          // Get the values of the inputs
-          const newNumberPhone = inputNb.value;
-          const newNameReceiver = inputName.value;
-          const newAddress = inputAdd.value;
+      //   // Add event listener for "Lưu" button
+      //   btnSave.addEventListener("click", async () => {
+      //     // Get the values of the inputs
+      //     const newNumberPhone = inputNb.value;
+      //     const newNameReceiver = inputName.value;
+      //     const newAddress = inputAdd.value;
 
-          // Call the API to update the order
-          const response = await fetch(
-            `http://localhost:8080/api/order/update?id=${order.id}`,
-            {
-              method: "PUT",
-              headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                numberPhone: newNumberPhone,
-                nameReceiver: newNameReceiver,
-                address: newAddress,
-              }),
-            }
-          );
+      //     // Call the API to update the order
+      //     const response = await fetch(
+      //       `http://localhost:8080/api/order/update?id=${order.id}`,
+      //       {
+      //         method: "PUT",
+      //         headers: {
+      //           Authorization: `Bearer ${token}`,
+      //           "Content-Type": "application/json",
+      //         },
+      //         body: JSON.stringify({
+      //           numberPhone: newNumberPhone,
+      //           nameReceiver: newNameReceiver,
+      //           address: newAddress,
+      //         }),
+      //       }
+      //     );
 
-          // If the update is successful, reload
+      //     // If the update is successful, reload
 
-          // If the update is successful, reload the orders
-          if (response.ok) {
-            window.location.reload();
-          }
-        });
-      });
+      //     // If the update is successful, reload the orders
+      //     if (response.ok) {
+      //       window.location.reload();
+      //     }
+      //   });
+      // });
     });
   } catch (error) {
     console.error(error);

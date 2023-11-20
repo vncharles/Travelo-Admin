@@ -18,7 +18,11 @@ const fetchStaffData = async () => {
 
   if (staffId) {
     try {
-      const response = await fetch(`http://localhost:8084/staff/${staffId}`);
+      const response = await fetch(`http://localhost:8084/staff/${staffId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response.ok) {
         const data = await response.json();
         populateForm(data);
@@ -85,7 +89,7 @@ const handleSubmit = async (event) => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(formData),
+      body: formData,
     });
 
     if (response.ok) {

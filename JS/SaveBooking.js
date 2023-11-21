@@ -28,6 +28,8 @@ const fetchStaffData = async () => {
                 populateForm(data);
             } else {
                 console.error("Failed to fetch staff data");
+                const errData = response.json();
+                alert("Lỗi " + errData.message);
             }
         } catch (error) {
             console.error("Error fetching staff data:", error);
@@ -48,9 +50,12 @@ const fetchStaffDataTourInfo = async () => {
         if (response.ok) {
             const data = await response.json();
             populateFormTourInfo(data);
+            populateStatusBooking();
             console.log(data);
         } else {
             console.error("Failed to fetch staff data");
+            const errData = response.json();
+            alert("Lỗi " + errData.message);
         }
     } catch (error) {
         console.error("Error fetching staff data:", error);
@@ -62,9 +67,11 @@ const getGenderString = (gender) => {
     return gender ? "male" : "female";
 };
 let tourInfoName;
+let currentBookingStatus;
 // Function to populate the form fields with the fetched data
 const populateForm = (data) => {
     tourInfoName = data.tour.tourInfo.name;
+    currentBookingStatus = data.status;
     console.log(data.tour.tourInfo.name);
     console.log(data);
     if (data) {
@@ -97,8 +104,61 @@ const populateFormTourInfo = (data) => {
         })
 };
 
+// set status
+const populateStatusBooking = () => {
+    let selectEl = document.getElementById('bookingStatus');
+
+
+        // Tạo option mới
+        let option1 = document.createElement("option");
+        option1.value = "NEW";
+        option1.text = "Đã khởi tạo";
+        selectEl.appendChild(option1);
+
+        let option2 = document.createElement("option");
+        option2.value = "UNPAID";
+        option2.text = "Chưa thanh toán";
+        selectEl.appendChild(option2);
+
+        let option3 = document.createElement("option");
+        option3.value = "PAID";
+        option3.text = "Đã thanh toán";
+        selectEl.appendChild(option3);
+
+        let option4 = document.createElement("option");
+        option4.value = "DONE";
+        option4.text = "Hoàn thành";
+        selectEl.appendChild(option4);
+
+        let option5 = document.createElement("option");
+        option5.value = "CANCEL";
+        option5.text = "Đã hủy";
+        selectEl.appendChild(option5);
+
+        selectOptionStatus("bookingStatus", currentBookingStatus);
+};
+
 function selectOptionByName(selectId, name) {
 
+    let selectEl = document.getElementById(selectId);
+    
+    selectEl.selectedIndex = -1;
+  
+    let options = selectEl.options;
+
+    for(let i = 0; i < options.length; i++) {
+      if(options[i].text === name) {
+        options[i].selected = true;
+        return;
+      }
+    }
+  
+    options[0].selected = true; // Mặc định option đầu tiên
+  
+  }
+
+  function selectOptionStatus(selectId, name) {
+    console.log("Name status: " + name);
     let selectEl = document.getElementById(selectId);
     
     selectEl.selectedIndex = -1;
@@ -143,7 +203,7 @@ function selectOptionByName(selectId, name) {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const staffId = getParameterByName("tour_id");
+        const staffId = getParameterByName("booking_id");
         const formData = getFormData();
 
         try {
@@ -165,14 +225,14 @@ function selectOptionByName(selectId, name) {
             });
 
 
-
             console.log(formData);
 
             if (response.ok) {
                 alert("Lưu thành công!");
                 window.location.href = "Tour.html";
             } else {
-                alert("Không thể lưu được!");
+                const errData = response.json();
+                alert("Lỗi " + errData.message);
             }
         } catch (error) {
             console.error("Error:", error);

@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 const fetchOrders = () => {
   return new Promise((resolve, reject) => {
-    fetch("http://localhost:8084/tour", {
+    fetch("http://localhost:8084/tour/get-all", {
       headers: {
         Authorization: `Bearer ${token}`,
       },

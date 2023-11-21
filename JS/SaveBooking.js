@@ -193,7 +193,7 @@ function selectOptionByName(selectId, name) {
             name: document.getElementById("bookingName").value,
             phone: document.getElementById("bookingPhone").value,
             address: document.getElementById("bookingAddress").value,
-            tourInfoId: document.getElementById("bookingNumberPerson").value,
+            tourId: document.getElementById("bookingNumberPerson").value,
             numberPerson: document.getElementById("bookingNumberPerson").value,
         };
     };
@@ -207,7 +207,7 @@ function selectOptionByName(selectId, name) {
         const formData = getFormData();
 
         try {
-            let url = "http://localhost:8084/tour";
+            let url = "http://localhost:8084/booking/staff-create";
             let method = "POST";
 
             if (staffId) {
@@ -229,9 +229,10 @@ function selectOptionByName(selectId, name) {
 
             if (response.ok) {
                 alert("Lưu thành công!");
-                window.location.href = "Tour.html";
+                window.location.href = "Booking.html";
             } else {
-                const errData = response.json();
+                const errData = await response.json();
+                console.log(errData);
                 alert("Lỗi " + errData.message);
             }
         } catch (error) {

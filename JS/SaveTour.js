@@ -61,37 +61,60 @@ const fetchStaffDataTourInfo = async () => {
 const getGenderString = (gender) => {
     return gender ? "male" : "female";
 };
-
+let tourInfoName;
 // Function to populate the form fields with the fetched data
 const populateForm = (data) => {
+    tourInfoName = data.tourInfo.name;
+    console.log(data.tourInfo.name);
     if (data) {
         document.getElementById("tourCreateAt").value = data.createAt || "";
         document.getElementById("tourstartDate").value = data.startDate || "";
         document.getElementById("tourEndDate").value = data.endDate || "";
         document.getElementById("tourPrice").value = data.price || "";
         document.getElementById("tourStock").value = data.stock || "";
-
         // document.getElementById("staffDOB").value = data.birthday || "";
     }
 };
+// Lấy theo tourInfo name
+const populateFormTourInfo = (data) => {
+        let selectEl = document.getElementById('tourNameTest');
 
-// const populateFormTourInfo = (data) => {
-//     if (data) {
-//         let selectEl = document.getElementById('tourNameTest');
+        // Duyệt qua các phần tử trong data
+        data.forEach(item => {
 
-//         // Duyệt qua các phần tử trong data
-//         data.forEach(item => {
+            // Tạo option mới
+            let option = document.createElement("option");
+            
+            // Set giá trị và text
+            option.text = item.name;
+            
+            // Thêm vào select
+            selectEl.appendChild(option);
+            selectOptionByName("tourNameTest", tourInfoName);
+        })
+};
 
-//             // Tạo option mới
-//             let option = document.createElement("option");
+function selectOptionByName(selectId, name) {
 
-//             // Set giá trị và text
-//             option.text = item.name;
+    let selectEl = document.getElementById(selectId);
+    
+    selectEl.selectedIndex = -1;
+  
+    let options = selectEl.options;
 
-//             // Thêm vào select
-//             selectEl.appendChild(option);
-//         }}
-// }
+    for(let i = 0; i < options.length; i++) {
+      if(options[i].text === name) {
+        options[i].selected = true;
+        return;
+      }
+    }
+  
+    options[0].selected = true; // Mặc định option đầu tiên
+  
+  }
+
+
+
 
     // Fetch data when the page loads
     window.addEventListener("DOMContentLoaded", () => {
@@ -107,7 +130,6 @@ const populateForm = (data) => {
             endDate: document.getElementById("tourEndDate").value,
             price: document.getElementById("tourPrice").value,
             stock: document.getElementById("tourStock").value,
-            gender: document.getElementById("tourName").value
         };
     };
 

@@ -65,9 +65,9 @@ const renderOrders = async () => {
                             <td>${formatLocalDatetime(tour.endDate)} </td>
                             <td>${formatCurrency(tour.price)}</th>
                             <td>${tour.stock} vé</th>
-                            <td>
+                            <td style="display: flex; align-items: center";>
                               <button class="btn-edit" data-id="${tour.id}">Sửa</button>
-                              <button class="btn-delete" data-id="${tour.id}">Xóa</button>
+              
                           </td>
       `;
       tbody.appendChild(tr);
@@ -81,32 +81,32 @@ const renderOrders = async () => {
       });
 
       // Adding event listener to each "Delete" button
-      const deleteButton = tr.querySelector(".btn-delete");
-      deleteButton.addEventListener("click", () => {
-        const tourId = tour.id;
-        const confirmation = confirm("Bạn có chắc muốn xoá nhân viên này không?");
-        if (confirmation) {
-          fetch(`http://localhost:8084/tour/${tourId}`, {
-            method: "DELETE",
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          })
-            .then((response) => {
-              if (response.status === 200) {
-                alert("Xoá thành công");
-                location.reload(); // Reload the page after successful deletion
-              } else {
-                console.log(response);
-                throw new Error("Delete request failed");
-              }
-            })
-            .catch((error) => {
-              console.error("Delete request error:", error);
-              alert("Xoá không thành công");
-            });
-        }
-      });
+      // const deleteButton = tr.querySelector(".btn-delete");
+      // deleteButton.addEventListener("click", () => {
+      //   const tourId = tour.id;
+      //   const confirmation = confirm("Bạn có chắc muốn xoá nhân viên này không?");
+      //   if (confirmation) {
+      //     fetch(`http://localhost:8084/tour/${tourId}`, {
+      //       method: "DELETE",
+      //       headers: {
+      //         Authorization: `Bearer ${token}`,
+      //       },
+      //     })
+      //       .then((response) => {
+      //         if (response.status === 200) {
+      //           alert("Xoá thành công");
+      //           location.reload(); // Reload the page after successful deletion
+      //         } else {
+      //           console.log(response);
+      //           throw new Error("Delete request failed");
+      //         }
+      //       })
+      //       .catch((error) => {
+      //         console.error("Delete request error:", error);
+      //         alert("Xoá không thành công");
+      //       });
+      //   }
+      // });
     });
   } catch (error) {
     console.error(error);

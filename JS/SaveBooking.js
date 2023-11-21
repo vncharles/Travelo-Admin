@@ -42,7 +42,11 @@ const fetchStaffDataTourInfo = async () => {
 
     // if (tourId) {
     try {
-        const response = await fetch(`http://localhost:8084/tour-info`, {
+        const bookingId = getParameterByName("booking_id");
+        let urlRequest;
+        if(bookingId) urlRequest = "http://localhost:8084/tour-info";
+        else urlRequest = "http://localhost:8084/tour"
+        const response = await fetch(urlRequest, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -87,16 +91,21 @@ const populateForm = (data) => {
 // Lấy theo tourInfo name
 const populateFormTourInfo = (data) => {
         let selectEl = document.getElementById('bookingNameTour');
-
+        const bookingId = getParameterByName("booking_id");
         // Duyệt qua các phần tử trong data
         data.forEach(item => {
 
             // Tạo option mới
             let option = document.createElement("option");
             
-            // Set giá trị và text
-            option.value = item.id;
-            option.text = item.name;
+            if(bookingId) {
+                option.value = item.id;
+                option.text = item.name;
+            } else {
+                option.value = item.tourInfo.id;
+                option.text = item.tourInfo.name;
+            }
+            
             
             // Thêm vào select
             selectEl.appendChild(option);

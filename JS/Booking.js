@@ -75,7 +75,7 @@ const renderOrders = async () => {
                             <td>${booking.customer.email}</td>
                             <td>${formatLocalDatetime(booking.tour.startDate)}</td>
                             <td>${formatLocalDatetime(booking.tour.endDate)}</td>
-                            <td>
+                            <td style="display: flex; align-items: center; gap: 10px;">
                               <button class="btn-edit" data-id="${booking.id}">Sửa</button>
                               <button class="btn-delete" data-id="${booking.id}">Cancel</button>
                           </td>
@@ -94,7 +94,7 @@ const renderOrders = async () => {
      const deleteButton = tr.querySelector(".btn-delete");
      deleteButton.addEventListener("click", () => {
       const bookingId = booking.id;
-      const confirmation = confirm("Bạn có chắc muốn xoá nhân viên này không?");
+      const confirmation = confirm("Bạn có chắc muốn xoá thông tin tour này không?");
       
       if (confirmation) {
         fetch(`http://localhost:8084/booking/${bookingId}`, {

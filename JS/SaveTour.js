@@ -67,7 +67,7 @@ const populateForm = (data) => {
     tourInfoName = data.tourInfo.name;
     console.log(data.tourInfo.name);
     if (data) {
-        document.getElementById("tourCreateAt").value = data.createAt || "";
+        // document.getElementById("tourCreateAt").value = data.createAt || "";
         document.getElementById("tourstartDate").value = data.startDate || "";
         document.getElementById("tourEndDate").value = data.endDate || "";
         document.getElementById("tourPrice").value = data.price || "";
@@ -86,6 +86,7 @@ const populateFormTourInfo = (data) => {
             let option = document.createElement("option");
             
             // Set giá trị và text
+            option.value = item.id;
             option.text = item.name;
             
             // Thêm vào select
@@ -125,11 +126,12 @@ function selectOptionByName(selectId, name) {
     // Function to get form data
     const getFormData = () => {
         return {
-            createAt: document.getElementById("tourCreateAt").value,
+            // createAt: document.getElementById("tourCreateAt").value,
             startDate: document.getElementById("tourstartDate").value,
             endDate: document.getElementById("tourEndDate").value,
             price: document.getElementById("tourPrice").value,
             stock: document.getElementById("tourStock").value,
+            tourInfoId: document.getElementById("tourNameTest").value,
         };
     };
 

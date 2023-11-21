@@ -59,42 +59,42 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                          <li>
-                            <a href="../HTML/Booking.html" aria-expanded="true"><i
+                            <li>
+                                <a href="../HTML/Booking.html" aria-expanded="true"><i
                                             class="ti-palette"></i><span>Quản
                                             lí đặt tour</span></a>
 
-                        </li>
-                        <li>
-                            <a href="../HTML/Tour.html" aria-expanded="true"><i
+                            </li>
+                            <li>
+                                <a href="../HTML/Tour.html" aria-expanded="true"><i
                                             class="ti-palette"></i><span>Quản
                                             lí tour</span></a>
 
-                        </li>
-                        <li>
-                            <a href="../HTML/TourInfo.html" aria-expanded="true"><i
+                            </li>
+                            <li>
+                                <a href="../HTML/TourInfo.html" aria-expanded="true"><i
                                             class="ti-palette"></i><span>Quản
                                             lí thông tin tour</span></a>
 
-                        </li>
-                        <li>
-                            <a href="../HTML/Location.html" aria-expanded="true"><i
+                            </li>
+                            <li>
+                                <a href="../HTML/Location.html" aria-expanded="true"><i
                                             class="ti-palette"></i><span>Quản
                                             lí địa điểm</span></a>
 
-                        </li>
-                        <li>
-                            <a href="../HTML/Staff.html" aria-expanded="true"><i
+                            </li>
+                            <li>
+                                <a href="../HTML/Staff.html" aria-expanded="true"><i
                                             class="ti-palette"></i><span>Quản
                                             lí nhân viên</span></a>
 
-                        </li>
-                        <li>
-                            <a href="../HTML/Customer.html" aria-expanded="true"><i
+                            </li>
+                            <li>
+                                <a href="../HTML/Customer.html" aria-expanded="true"><i
                                             class="ti-palette"></i><span>Quản
                                             lí khách hàng</span></a>
 
-                        </li>
+                            </li>
 
 
                         </ul>
@@ -145,7 +145,8 @@
                             <h4 class="page-title pull-left">Dashboard</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.html">Dashboard</a></li>
-                                <li><span>Quản lí Sản phẩm</span></li>
+                                <li><a href="Staff.html">Quản lý nhân viên</a></li>
+                                <li><span>Thông tin nhân viên</span></li>
                             </ul>
                         </div>
                     </div>
@@ -165,48 +166,48 @@
             <!-- detail -->
 
             <div class="col-lg-8" style="margin-left: 200px;">
-              <div class="card">
-                  <div class="card-body">
-                      <h4 class="header-title">Thông tin nhân viên</h4>
-                      <form id="createStaffForm" enctype="multipart/form-data">
-                          <div class="form-group">
-                              <label for="staffName">Tên nhân viên</label>
-                              <input type="text" class="form-control" id="staffName" name="staffName" required>
-                          </div>
-                          <div class="form-group">
-                              <label for="staffEmail">Email</label>
-                              <input type="email" class="form-control" id="staffEmail" name="staffEmail" required>
-                          </div>
-                          <div class="form-group">
-                              <label for="staffPhone">Số điện thoại</label>
-                              <input type="tel" class="form-control" id="staffPhone" name="staffPhone" required>
-                          </div>
-                          <div class="form-group">
-                              <label for="staffIDCard">Căn cước công dân</label>
-                              <input type="text" class="form-control" id="staffIDCard" name="staffIDCard" required>
-                          </div>
-                          <div class="form-group">
-                              <label for="staffAddress">Địa chỉ</label>
-                              <input type="text" class="form-control" id="staffAddress" name="staffAddress" required>
-                          </div>
-                          <div class="form-group">
-                              <label for="staffGender">Giới tính</label>
-                              <select class="form-control" id="staffGender" name="staffGender" required>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">Thông tin nhân viên</h4>
+                        <form id="createStaffForm" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="staffName">Tên nhân viên</label>
+                                <input type="text" class="form-control" id="staffName" name="staffName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="staffEmail">Email</label>
+                                <input type="email" class="form-control" id="staffEmail" name="staffEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="staffPhone">Số điện thoại</label>
+                                <input type="tel" class="form-control" id="staffPhone" name="staffPhone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="staffIDCard">Căn cước công dân</label>
+                                <input type="text" class="form-control" id="staffIDCard" name="staffIDCard" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="staffAddress">Địa chỉ</label>
+                                <input type="text" class="form-control" id="staffAddress" name="staffAddress" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="staffGender">Giới tính</label>
+                                <select class="form-control" id="staffGender" name="staffGender" required>
                                   <option value="">-- Chọn giới tính --</option>
                                   <option value="male">Nam</option>
                                   <option value="female">Nữ</option>
                                   <option value="other">Khác</option>
                               </select>
-                          </div>
-                          <div class="form-group">
-                              <label for="staffDOB">Ngày sinh</label>
-                              <input type="date" class="form-control" id="staffDOB" name="staffDOB" required>
-                          </div>
-                          <button type="submit" class="btn btn-primary">Lưu</button>
-                      </form>
-                  </div>
-              </div>
-          </div>          
+                            </div>
+                            <div class="form-group">
+                                <label for="staffDOB">Ngày sinh</label>
+                                <input type="date" class="form-control" id="staffDOB" name="staffDOB" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Lưu</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
 
             <!-- main content area end -->

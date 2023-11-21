@@ -65,12 +65,13 @@ const fetchLocationData = async () => {
 
 let currentLocation;
 const populateForm = (data) => {
+  const updatedText = data.itinerary.replace(/\./g, '\n');
   if (data) {
     currentLocation = data.location.province;
     document.getElementById("tourName").value = data.name || "";
     document.getElementById("tourDescription").value = data.description || "";
     document.getElementById("price").value = data.price || "";
-    document.getElementById("tourItinerary").value = data.itinerary || "";
+    document.getElementById("tourItinerary").value = updatedText || "";
     displayImages(data.images);
   }
 };

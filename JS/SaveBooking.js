@@ -166,7 +166,7 @@ function selectOptionByName(selectId, name) {
     let options = selectEl.options;
 
     for(let i = 0; i < options.length; i++) {
-      if(options[i].text === name) {
+      if(options[i].value === name) {
         options[i].selected = true;
         return;
       }
@@ -195,6 +195,7 @@ function selectOptionByName(selectId, name) {
             address: document.getElementById("bookingAddress").value,
             tourId: document.getElementById("bookingNumberPerson").value,
             numberPerson: document.getElementById("bookingNumberPerson").value,
+            status: document.getElementById("bookingStatus").value
         };
     };
 
@@ -207,13 +208,13 @@ function selectOptionByName(selectId, name) {
         const formData = getFormData();
 
         try {
-            let url = "http://localhost:8084/booking/staff-create";
+            let url = "http://localhost:8084/booking";
             let method = "POST";
 
             if (staffId) {
                 url += `/${staffId}`;
                 method = "PUT";
-            }
+            } else url += "/staff-create";
 
             const response = await fetch(url, {
                 method: method,

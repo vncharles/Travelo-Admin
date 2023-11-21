@@ -47,7 +47,7 @@ const renderOrders = async () => {
                             <td>${tourinfo.description}</td>
                             <td>${tourinfo.createAt}</td>
                             <td>${tourinfo.price}</td>
-                            <td>
+                            <td style="display: flex; align-items: center; gap: 10px;">
                               <button class="btn-edit" data-id="${tourinfo.id}">Sửa</button>
                               <button class="btn-delete" data-id="${tourinfo.id}">Xóa</button>
                           </td>

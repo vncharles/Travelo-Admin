@@ -51,7 +51,7 @@ const renderOrders = async () => {
                             <td>${staff.gender?"Nam":"Nữ"}</td>
                             <td>${staff.birthday}</td>
                             <td>${staff.statusWorking?"Còn làm việc":"Nghỉ việc"}</td>
-                            <td>
+                            <td style="display: flex; align-items: center; gap: 10px;">
                               <button class="btn-edit" data-id="${staff.id}">Sửa</button>
                               <button class="btn-delete" data-id="${staff.id}">Cho thôi việc</button>
                           </td>

@@ -45,7 +45,7 @@ const renderOrders = async() => {
                             <td>${location.id}</td>
                             <td>${location.province}</td>
                             <td>${location.description}</td>
-                            <td>
+                            <td style="display: flex; align-items: center;">
                               <button class="btn-edit" data-id="${location.id}">Sửa</button>
                           </td>
       `;

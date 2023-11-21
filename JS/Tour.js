@@ -29,6 +29,22 @@ const fetchOrders = () => {
       });
   });
 };
+
+function formatCurrency(number) {
+  return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(number);
+}
+function formatLocalDatetime(datetimeString) {
+  const date = new Date(datetimeString);
+
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0, nên cần +1
+  const year = date.getFullYear();
+
+  return `${hours}:${minutes}:${seconds} ${day}/${month}/${year}`;
+}
 const renderOrders = async () => {
   try {
     const orders = await fetchOrders();
@@ -43,12 +59,12 @@ const renderOrders = async () => {
       const tr = document.createElement("tr");
       tr.innerHTML = `
                             <td>${tour.id}</td>
-                            <td>${tour.createAt}</td>
-                            <td>${tour.startDate}</th>
-                            <td>${tour.endDate} </td>
-                            <td>${tour.price}</th>
-                            <td>${tour.stock}</th>
                             <td>${tour.tourInfo.name}</td>
+                            <td>${tour.createAt}</td>
+                            <td>${formatLocalDatetime(tour.startDate)}</th>
+                            <td>${formatLocalDatetime(tour.endDate)} </td>
+                            <td>${formatCurrency(tour.price)}</th>
+                            <td>${tour.stock} vé</th>
                             <td>
                               <button class="btn-edit" data-id="${tour.id}">Sửa</button>
                               <button class="btn-delete" data-id="${tour.id}">Xóa</button>

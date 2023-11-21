@@ -14,15 +14,17 @@ const getParameterByName = (name, url) => {
 
 // Function to fetch data and populate the form
 const fetchStaffData = async() => {
-    const staffId = getParameterByName("staff_id");
+    const customerId = getParameterByName("customer_id");
 
-    if (staffId) {
+    if (customerId) {
         try {
-            const response = await fetch(`http://localhost:8084/staff/${staffId}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
+            const response = await fetch(
+                `http://localhost:8084/customer/${customerId}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
             if (response.ok) {
                 const data = await response.json();
                 populateForm(data);
@@ -35,22 +37,17 @@ const fetchStaffData = async() => {
     }
 };
 
-const getGenderString = (gender) => {
-    return gender ? "male" : "female";
-};
+// const getGenderString = (gender) => {
+//     return gender ? "male" : "female";
+// };
 
 // Function to populate the form fields with the fetched data
 const populateForm = (data) => {
     if (data) {
-        document.getElementById("staffName").value = data.name || "";
-        document.getElementById("staffEmail").value = data.email || "";
-        document.getElementById("staffPhone").value = data.phone || "";
-        document.getElementById("staffIDCard").value = data.personId || "";
-        document.getElementById("staffAddress").value = data.address || "";
-        document.getElementById("staffGender").value = data.gender ?
-            "male" :
-            "female";
-        document.getElementById("staffDOB").value = data.birthday || "";
+        document.getElementById("customerName").value = data.name || "";
+        document.getElementById("customerEmail").value = data.email || "";
+        document.getElementById("customerPhone").value = data.phone || "";
+        document.getElementById("customerAddress").value = data.address || "";
     }
 };
 
@@ -62,13 +59,10 @@ window.addEventListener("DOMContentLoaded", () => {
 // Function to get form data
 const getFormData = () => {
     return {
-        name: document.getElementById("staffName").value,
-        email: document.getElementById("staffEmail").value,
-        phone: document.getElementById("staffPhone").value,
-        personId: document.getElementById("staffIDCard").value,
-        address: document.getElementById("staffAddress").value,
-        gender: document.getElementById("staffGender").value === "male" ? true : false,
-        birthday: document.getElementById("staffDOB").value,
+        name: document.getElementById("customerName").value,
+        email: document.getElementById("customerEmail").value,
+        phone: document.getElementById("customerPhone").value,
+        address: document.getElementById("customerAddress").value,
     };
 };
 
@@ -76,15 +70,15 @@ const getFormData = () => {
 const handleSubmit = async(event) => {
     event.preventDefault();
 
-    const staffId = getParameterByName("staff_id");
+    const customerId = getParameterByName("customer_id");
     const formData = getFormData();
 
     try {
-        let url = "http://localhost:8084/staff";
+        let url = "http://localhost:8084/customer";
         let method = "POST";
 
-        if (staffId) {
-            url += `/${staffId}`;
+        if (customerId) {
+            url += `/${customerId}`;
             method = "PUT";
         }
 
@@ -97,11 +91,11 @@ const handleSubmit = async(event) => {
             body: JSON.stringify(formData),
         });
 
-        console.log(response);
+        console.log(formData);
 
         if (response.ok) {
             alert("Lưu thành công!");
-            window.location.href = "Staff.html";
+            window.location.href = "Customer.html";
         } else {
             alert("Không thể lưu được!");
         }

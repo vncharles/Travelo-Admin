@@ -14,15 +14,17 @@ const getParameterByName = (name, url) => {
 
 // Function to fetch data and populate the form
 const fetchStaffData = async() => {
-    const staffId = getParameterByName("staff_id");
+    const locationId = getParameterByName("location_id");
 
-    if (staffId) {
+    if (locationId) {
         try {
-            const response = await fetch(`http://localhost:8084/staff/${staffId}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
+            const response = await fetch(
+                `http://localhost:8084/location/${locationId}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
             if (response.ok) {
                 const data = await response.json();
                 populateForm(data);
@@ -35,22 +37,16 @@ const fetchStaffData = async() => {
     }
 };
 
-const getGenderString = (gender) => {
-    return gender ? "male" : "female";
-};
+// const getGenderString = (gender) => {
+//     return gender ? "male" : "female";
+// };
 
 // Function to populate the form fields with the fetched data
 const populateForm = (data) => {
     if (data) {
-        document.getElementById("staffName").value = data.name || "";
-        document.getElementById("staffEmail").value = data.email || "";
-        document.getElementById("staffPhone").value = data.phone || "";
-        document.getElementById("staffIDCard").value = data.personId || "";
-        document.getElementById("staffAddress").value = data.address || "";
-        document.getElementById("staffGender").value = data.gender ?
-            "male" :
-            "female";
-        document.getElementById("staffDOB").value = data.birthday || "";
+        document.getElementById("locationProvince").value = data.province || "";
+        document.getElementById("locationDescription").value =
+            data.description || "";
     }
 };
 
@@ -62,13 +58,8 @@ window.addEventListener("DOMContentLoaded", () => {
 // Function to get form data
 const getFormData = () => {
     return {
-        name: document.getElementById("staffName").value,
-        email: document.getElementById("staffEmail").value,
-        phone: document.getElementById("staffPhone").value,
-        personId: document.getElementById("staffIDCard").value,
-        address: document.getElementById("staffAddress").value,
-        gender: document.getElementById("staffGender").value === "male" ? true : false,
-        birthday: document.getElementById("staffDOB").value,
+        province: document.getElementById("locationProvince").value,
+        description: document.getElementById("locationDescription").value,
     };
 };
 
@@ -76,15 +67,15 @@ const getFormData = () => {
 const handleSubmit = async(event) => {
     event.preventDefault();
 
-    const staffId = getParameterByName("staff_id");
+    const locationId = getParameterByName("location_id");
     const formData = getFormData();
 
     try {
-        let url = "http://localhost:8084/staff";
+        let url = "http://localhost:8084/location";
         let method = "POST";
 
-        if (staffId) {
-            url += `/${staffId}`;
+        if (locationId) {
+            url += `/${locationId}`;
             method = "PUT";
         }
 
@@ -97,11 +88,11 @@ const handleSubmit = async(event) => {
             body: JSON.stringify(formData),
         });
 
-        console.log(response);
+        console.log(formData);
 
         if (response.ok) {
             alert("Lưu thành công!");
-            window.location.href = "Staff.html";
+            window.location.href = "Location.html";
         } else {
             alert("Không thể lưu được!");
         }

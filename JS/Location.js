@@ -58,37 +58,12 @@ const renderOrders = async() => {
                 // Redirect to form-staff.html with staff_id parameter
                 window.location.href = `form-location.html?location_id=${locationId}`;
             });
-            // Adding event listener to each "Delete" button
-            // const deleteButton = tr.querySelector(".btn-delete");
-            // deleteButton.addEventListener("click", () => {
-            //     const locationId = location.id;
-            //     const confirmation = confirm(
-            //         "Bạn có chắc muốn xoá nhân viên này không?"
-            //     );
-            //     if (confirmation) {
-            //         fetch(`http://localhost:8084/location/${locationId}`, {
-            //                 method: "DELETE",
-            //                 headers: {
-            //                     Authorization: `Bearer ${token}`,
-            //                 },
-            //             })
-            //             .then((response) => {
-            //                 if (response.status === 200) {
-            //                     alert("Xoá thành công");
-            //                     location.reload(); // Reload the page after successful deletion
-            //                 } else {
-            //                     console.log(response);
-            //                     throw new Error("Delete request failed");
-            //                 }
-            //             })
-            //             .catch((error) => {
-            //                 console.error("Delete request error:", error);
-            //                 alert("Xoá không thành công");
-            //             });
-            //     }
-            // });
         });
     } catch (error) {
         console.error(error);
     }
 };
+
+document.getElementById("add-product-btn").addEventListener("click", function() {
+    window.location.href = "form-location.html";
+   });

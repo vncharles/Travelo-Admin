@@ -102,7 +102,7 @@ const populateFormTourInfo = (data) => {
                 option.value = item.id;
                 option.text = item.name;
             } else {
-                option.value = item.tourInfo.id;
+                option.value = item.id;
                 option.text = item.tourInfo.name;
             }
             
@@ -202,7 +202,7 @@ function selectOptionByName(selectId, name) {
             name: document.getElementById("bookingName").value,
             phone: document.getElementById("bookingPhone").value,
             address: document.getElementById("bookingAddress").value,
-            tourId: document.getElementById("bookingNumberPerson").value,
+            tourId: document.getElementById("bookingNameTour").value,
             numberPerson: document.getElementById("bookingNumberPerson").value,
             status: document.getElementById("bookingStatus").value
         };
@@ -253,3 +253,11 @@ function selectOptionByName(selectId, name) {
 
     // Event listener for form submission
     document.getElementById("createBookingForm").addEventListener("submit", handleSubmit);
+
+
+    const logout = document.querySelector("#logout");
+    logout.addEventListener("click", () => {
+     localStorage.removeItem("data");
+     localStorage.removeItem("token");
+     window.location.href = "login.html";
+    });

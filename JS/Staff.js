@@ -101,9 +101,9 @@ const renderOrders = async () => {
 
 const logout = document.querySelector("#logout");
 logout.addEventListener("click", () => {
-  localStorage.removeItem("data");
-  localStorage.removeItem("token");
-  window.location.href = "/HTML/login.html";
+ localStorage.removeItem("data");
+ localStorage.removeItem("token");
+ window.location.href = "login.html";
 });
 
 document.getElementById("add-product-btn").addEventListener("click", function() {

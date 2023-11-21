@@ -67,3 +67,10 @@ const renderOrders = async() => {
 document.getElementById("add-product-btn").addEventListener("click", function() {
     window.location.href = "form-location.html";
    });
+
+const logout = document.querySelector("#logout");
+logout.addEventListener("click", () => {
+localStorage.removeItem("data");
+localStorage.removeItem("token");
+window.location.href = "login.html";
+});

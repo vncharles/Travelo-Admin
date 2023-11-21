@@ -179,3 +179,10 @@ function selectOptionByName(selectId, name) {
 
     // Event listener for form submission
     document.getElementById("createTourForm").addEventListener("submit", handleSubmit);
+
+    const logout = document.querySelector("#logout");
+logout.addEventListener("click", () => {
+ localStorage.removeItem("data");
+ localStorage.removeItem("token");
+ window.location.href = "login.html";
+});

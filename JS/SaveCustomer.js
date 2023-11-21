@@ -97,7 +97,8 @@ const handleSubmit = async(event) => {
             alert("Lưu thành công!");
             window.location.href = "Customer.html";
         } else {
-            alert("Không thể lưu được!");
+            const errorData = await response.json();
+            alert("Lỗi: " + errorData.message);
         }
     } catch (error) {
         console.error("Error:", error);
@@ -109,3 +110,10 @@ const handleSubmit = async(event) => {
 document
     .getElementById("createStaffForm")
     .addEventListener("submit", handleSubmit);
+
+    const logout = document.querySelector("#logout");
+    logout.addEventListener("click", () => {
+     localStorage.removeItem("data");
+     localStorage.removeItem("token");
+     window.location.href = "login.html";
+    });

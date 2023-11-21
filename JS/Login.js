@@ -25,7 +25,7 @@ form.addEventListener("submit", async (event) => {
     }
 
     const responseData = await response.json();
-    if (responseData.role !== "ROLE_ADMIN") {
+    if (responseData.role !== "ROLE_ADMIN" && responseData.role !== "ROLE_STAFF") {
       alert("Bạn không có quyền truy cập trang này.");
       return;
     }

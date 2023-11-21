@@ -221,7 +221,7 @@ table.addEventListener("click", function (event) {
 
 const logout = document.querySelector("#logout");
 logout.addEventListener("click", () => {
-  localStorage.removeItem("data");
-  localStorage.removeItem("token");
-  window.location.href = "/HTML/login.html";
+ localStorage.removeItem("data");
+ localStorage.removeItem("token");
+ window.location.href = "login.html";
 });

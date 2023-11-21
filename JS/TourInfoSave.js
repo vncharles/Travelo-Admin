@@ -203,3 +203,10 @@ const handleFormSubmit = async (event) => {
 };
 
 document.getElementById("createStaffForm").addEventListener("submit", handleFormSubmit);
+
+const logout = document.querySelector("#logout");
+logout.addEventListener("click", () => {
+ localStorage.removeItem("data");
+ localStorage.removeItem("token");
+ window.location.href = "login.html";
+});

@@ -27,13 +27,21 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <style>
+        .card {
+            margin-bottom: 30px;
+            border: 1px solid #e3e6f0;
+            border-radius: 0.35rem;
+            background-color: #fff;
+            background-clip: border-box;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 
 <body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <!-- preloader area start -->
+
     <div id="preloader">
         <div class="loader"></div>
     </div>
@@ -51,42 +59,43 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li>
-                                <a href="../HTML/Booking.html" aria-expanded="true"><i
-                                                class="ti-palette"></i><span>Quản
-                                                lí đặt tour</span></a>
+                          <li>
+                            <a href="../HTML/Booking.html" aria-expanded="true"><i
+                                            class="ti-palette"></i><span>Quản
+                                            lí đặt tour</span></a>
 
-                            </li>
-                            <li>
-                                <a href="../HTML/Tour.html" aria-expanded="true"><i
-                                                class="ti-palette"></i><span>Quản
-                                                lí tour</span></a>
+                        </li>
+                        <li>
+                            <a href="../HTML/Tour.html" aria-expanded="true"><i
+                                            class="ti-palette"></i><span>Quản
+                                            lí tour</span></a>
 
-                            </li>
-                            <li>
-                                <a href="../HTML/TourInfo.html" aria-expanded="true"><i
-                                                class="ti-palette"></i><span>Quản
-                                                lí thông tin tour</span></a>
+                        </li>
+                        <li>
+                            <a href="../HTML/TourInfo.html" aria-expanded="true"><i
+                                            class="ti-palette"></i><span>Quản
+                                            lí thông tin tour</span></a>
 
-                            </li>
-                            <li>
-                                <a href="../HTML/Location.html" aria-expanded="true"><i
-                                                class="ti-palette"></i><span>Quản
-                                                lí địa điểm</span></a>
+                        </li>
+                        <li>
+                            <a href="../HTML/Location.html" aria-expanded="true"><i
+                                            class="ti-palette"></i><span>Quản
+                                            lí địa điểm</span></a>
 
-                            </li>
-                            <li>
-                                <a href="../HTML/Staff.html" aria-expanded="true"><i
-                                                class="ti-palette"></i><span>Quản
-                                                lí nhân viên</span></a>
+                        </li>
+                        <li>
+                            <a href="../HTML/Staff.html" aria-expanded="true"><i
+                                            class="ti-palette"></i><span>Quản
+                                            lí nhân viên</span></a>
 
-                            </li>
-                            <li>
-                                <a href="../HTML/Customer.html" aria-expanded="true"><i
-                                                class="ti-palette"></i><span>Quản
-                                                lí khách hàng</span></a>
+                        </li>
+                        <li>
+                            <a href="../HTML/Customer.html" aria-expanded="true"><i
+                                            class="ti-palette"></i><span>Quản
+                                            lí khách hàng</span></a>
 
-                            </li>
+                        </li>
+
 
                         </ul>
                     </nav>
@@ -143,11 +152,11 @@
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
                             <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown" id="userName">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
+                            <h4 class="user-name dropdown-toggle" id="username" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">Message</a>
                                 <a class="dropdown-item" href="#">Settings</a>
-                                <a class="dropdown-item" id="logout" href="#">Log Out</a>
+                                <a class="dropdown-item" href="#">Log Out</a>
                             </div>
                         </div>
                     </div>
@@ -155,122 +164,56 @@
             </div>
             <!-- detail -->
 
-            <style>
-                h1 {
-                    text-align: center;
-                    margin-top: 20px;
-                }
-                
-                table {
-                    border-collapse: collapse;
-                    width: 80%;
-                    margin: 20px auto;
-                    /* căn giữa trang web */
-                }
-                
-                table th,
-                table td {
-                    padding: 10px;
-                    text-align: left;
-                    border-bottom: 1px solid #ddd;
-                }
-                
-                table th {
-                    background-color: #f2f2f2;
-                    color: #333;
-                    font-weight: bold;
-                }
-                
-                table tr:hover {
-                    background-color: #f5f5f5;
-                }
-                
-                button {
-                    background-color: #4CAF50;
-                    color: white;
-                    padding: 8px 16px;
-                    border: none;
-                    border-radius: 4px;
-                    cursor: pointer;
-                }
-                
-                button:hover {
-                    background-color: #3e8e41;
-                }
-                
-                button:active {
-                    background-color: #36733c;
-                }
-                
-                td:last-child {
-                    text-align: center;
-                }
-            </style>
-            </head>
-
-            <body>
-
-                <h1>Danh sách đặt tour</h1>
-                <button id="add-product-btn">Thêm tour</button>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Số lượng người</th>
-                            <th>Ngày đặt</th>
-                            <th>Trạng thái</th>
-                            <th>Tổng tiền</th>
-                            <th>Email</th>
-                            <th>Tên tour</th>
-                            <th>Ngày bắt đầu</th>
-                            <th>Ngày kết thúc</th>
-                            <th style="text-align: center;" >Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="category-list">
-                        <!-- thêm các hàng khác tương tự ở đây -->
-                        <tr>
-                            <td>01</td>
-                            <td>10</th>
-                                <td>2023-11-20</td>
-                                <td>1</td>
-                                <td>5.000.000</th>
-                                    <td>tuanlo@gmail.com</td>
-                                    <td>Du lịch miền tây</td>
-                                    <td>2023-11-25</th>
-                                        <td>2023-11-29 </td>
-                                        <td>
-                                            <a href="">Xoá</a>
-                                            <a href="">Sửa</a>
-                                        </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <!-- Form để thêm sản phẩm mới -->
-                <div id="add-product-form" style="display: none;">
-                    <h2>Thêm sản phẩm mới</h2>
-                    <form>
-                        <div>
-                            <label for="product-name">Tên sản phẩm:</label>
-                            <input type="text" id="product-name" name="product-name">
+            <div class="col-lg-8" style="margin-left: 200px;">
+              <div class="card">
+                  <div class="card-body">
+                      <h4 class="header-title">Thông tin tour</h4>
+                      <form id="createBookingForm" enctype="multipart/form-data">
+                          <!-- <div class="form-group">
+                              <label for="tourCreateAt">Ngày tạo tour</label>
+                              <input type="date" class="form-control" id="tourCreateAt" name="tourCreateAt" required>
+                          </div> -->
+                          <div class="form-group">
+                              <label for="bookingEmail">Email</label>
+                              <input type="text" class="form-control" id="bookingEmail" name="bookingEmail" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="bookingName">Tên</label>
+                              <input type="text" class="form-control" id="bookingName" name="bookingName" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="bookingPhone">Điện thoại</label>
+                              <input type="text" class="form-control" id="bookingPhone" name="bookingPhone" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="bookingAddress">Địa chỉ</label>
+                              <input type="text" class="form-control" id="bookingAddress" name="bookingAddress" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="bookingNameTour">Tên tour</label>
+                            <select class="form-control" id="bookingNameTour" name="bookingNameTour" required>
+                            </select>
                         </div>
-                        <div>
-                            <button type="submit">Lưu</button>
-                            <button type="button" id="cancel-add-product-btn">Hủy</button>
+                        <div class="form-group">
+                            <label for="bookingNumberPerson">Số lượng người</label>
+                            <input type="text" class="form-control" id="bookingNumberPerson" name="bookingNumberPerson" required>
                         </div>
-                    </form>
+                          <button type="submit" class="btn btn-primary">Lưu</button>
+                      </form>
+                  </div>
+              </div>
+          </div>          
+
+
+            <!-- main content area end -->
+            <!-- footer area start-->
+            <footer>
+                <div class="footer-area">
+                    <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                    </p>
                 </div>
-
-                <!-- main content area end -->
-                <!-- footer area start-->
-                <footer>
-                    <div class="footer-area">
-                        <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.
-                        </p>
-                    </div>
-                </footer>
-                <!-- footer area end-->
+            </footer>
+            <!-- footer area end-->
         </div>
         <!-- page container area end -->
         <!-- offset area start -->
@@ -302,10 +245,10 @@
         <!-- others plugins -->
         <script src="assets/js/plugins.js"></script>
         <script src="assets/js/scripts.js"></script>
-        <script src="../JS/Booking.js">
+        <script src="../JS/SaveBooking.js">
         </script>
-        <link rel="stylesheet" href="../HTML/assets/css/Product.css">
 
-        </body>
+
+</body>
 
 </html>
